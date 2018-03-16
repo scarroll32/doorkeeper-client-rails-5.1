@@ -1,2 +1,7 @@
 <h1>Pages#index</h1>
-<%= link_to 'Authorize via Doorkeeper/Rails', new_oauth_token_path %>
+
+<% if session[:access_token] %>
+  <%= link_to 'Get User', "http://localhost:3000/api/user?access_token=#{session[:access_token]}" %>
+<% else %>
+  <%= link_to 'Authorize via Doorkeeper/Rails', new_oauth_token_path %>
+<% end %>
